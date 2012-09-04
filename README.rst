@@ -36,8 +36,8 @@ Author
 
 License Terms
 -------------
- ::
-  Copyright (C) 2012 Jean-Bernard Ratté (http://unary.ca:8080)
+
+ Copyright (C) 2012 Jean-Bernard Ratté (http://unary.ca:8080)
 
  Permission is hereby granted, free of charge, to any person obtaining a copy 
  of this software and associated documentation files (the "Software"), to deal
