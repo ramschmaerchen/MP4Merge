@@ -36,7 +36,7 @@ Author
 
 License Terms
 =============
-
+ 
 ::
  Copyright (C) 2012 Jean-Bernard Ratté (http://unary.ca:8080)
 
