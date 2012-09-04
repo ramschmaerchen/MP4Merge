@@ -1,4 +1,4 @@
-__author__ = 'Jean-Bernard Ratte - jean.bernard.ratte@gmail.com'
+__author__ = 'Jean-Bernard Ratte - jean.bernard.ratte@unary.ca'
 
 import os
 import subprocess
