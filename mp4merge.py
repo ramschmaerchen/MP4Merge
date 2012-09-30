@@ -52,7 +52,8 @@ def ask_source(msg, keep_asking=None):
 
 def build_cmd(dir, output, *files):
     files = map(lambda file: append_dir(dir, file), list(files))
-    return ' '.join(["mp4box -force-cat", '-add', files.pop(0), ''.join(['-cat ' + i for i in files]), output])
+    return ' '.join(["mp4box -force-cat", '-add', files.pop(0), ''.join(['-cat ' + i for i in files]),
+                     append_dir(dir, output)])
 
 
 if __name__ == '__main__':
