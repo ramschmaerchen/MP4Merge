@@ -86,7 +86,6 @@ if __name__ == '__main__':
                 merge = ask(MERGE_THIS % merge_name, keep_asking=True)
 
             if merge:
-
                 if len(files) > 1:
                     print VALIDATION % merge_name
                     print ' - Merging...\r\n'
@@ -99,12 +98,9 @@ if __name__ == '__main__':
                 else:
                     print ERROR_FILE_COUNT % directory[directory.rfind("/") + 1:]
 
-            else:
-                print ' - Skipping'
-
         print "Done!"
 
-    except (OSError, CalledProcessError):
+    except CalledProcessError:
         print 'Unable to check MP4Box version, you should check your MP4Box installation'
         print 'Compile from source, see http://gpac.sourceforge.net/'
 
