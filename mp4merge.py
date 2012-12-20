@@ -1,10 +1,7 @@
 __author__ = 'Jean-Bernard Ratte - jean.bernard.ratte@unary.ca'
 
-from os import listdir
-from os import path
-from subprocess import call
-from subprocess import check_output
-from subprocess import CalledProcessError
+from os import listdir, path
+from subprocess import call, check_output, CalledProcessError
 
 
 SOURCE_FOLDER = "Video files folder location: "
