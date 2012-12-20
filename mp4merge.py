@@ -7,12 +7,11 @@ from subprocess import check_output
 from subprocess import CalledProcessError
 
 
-SOURCE_FOLDER = "Where is located the source? "
-CONFLICTING_MERGE = "Prompt conflicting merges (Y/N)? "
+SOURCE_FOLDER = "Video files folder location: "
 BATCH_MERGE = "Merge all video in subfolders (Y/N)? "
 VALIDATION = ' - The output file is named "%s"'
-MERGE_THIS = ' - Do you want to merge for "%s" (Y/N)? '
-ERROR_FILE_COUNT = ' /!\ Could not merge, not enough files in folder %s'
+MERGE_THIS = ' - Do you want to merge "%s" (Y/N)? '
+ERROR_FILE_COUNT = 'Could not merge, there is not enough files in folder %s'
 
 
 def is_choice(val):
@@ -34,7 +33,7 @@ def ask(msg, keep_asking=None):
         else:
             return False
 
-    print '/!\ Invalid answer'
+    print 'Invalid answer'
     if keep_asking:
         ask(msg, keep_asking=keep_asking)
 
@@ -45,7 +44,7 @@ def ask_source(msg, keep_asking=None):
     if path.exists(resp):
         return resp
 
-    print '/!\ Invalid path'
+    print 'Invalid path'
     if keep_asking:
         ask_source(msg, keep_asking=keep_asking)
 
@@ -61,11 +60,8 @@ if __name__ == '__main__':
     print '-     This tool uses MP4Box     -'
     print '-  http://gpac.sourceforge.net  -'
     print '---------------------------------'
-    print '\r\nFolder arrangement:'
-    print '/path/to/source/output_title/part1.mp4\r\n'
 
     created_files = []
-
     try:
         check_output('mp4box -version', shell=True)
 
@@ -109,11 +105,11 @@ if __name__ == '__main__':
         print "Done!"
 
     except (OSError, CalledProcessError):
-        print '/!\ Unable to check MP4Box version, you should check your MP4Box installation'
-        print '/!\ Compile from source, see http://gpac.sourceforge.net/'
+        print 'Unable to check MP4Box version, you should check your MP4Box installation'
+        print 'Compile from source, see http://gpac.sourceforge.net/'
 
     except (KeyboardInterrupt, SystemExit):
-        print '\r\n/!\ Deleting newly created files'
+        print '\r\nDeleting newly created files'
 
         for file in created_files:
             return_code = call(['rm', file])
