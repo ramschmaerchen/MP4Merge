@@ -16,10 +16,6 @@ def is_choice(val):
         return True
 
 
-def append_dir(dirname, filename):
-    return ''.join([dirname.replace(' ', '\ '), '/', filename.replace(' ', '\ ')])
-
-
 def ask(msg, keep_asking=None):
     resp = str(raw_input(msg))
 
@@ -46,6 +42,10 @@ def ask_source(msg, keep_asking=None):
         ask_source(msg, keep_asking=keep_asking)
 
 
+def append_dir(dirname, filename):
+    return ''.join([dirname.replace(' ', '\ '), '/', filename.replace(' ', '\ ')])
+
+
 def build_cmd(dir, output, *files):
     files = map(lambda file: append_dir(dir, file), list(files))
     return ' '.join(["mp4box -force-cat", '-add', files.pop(0), ''.join(['-cat ' + i for i in files]),
@@ -63,10 +63,8 @@ if __name__ == '__main__':
         check_output('mp4box -version', shell=True)
 
         source = ask_source(SOURCE_FOLDER, keep_asking=True)
-        # Merge all file in source directory without propting for confirmation
+        # Merge all file in source directory without asking for confirmation
         is_batch = ask(BATCH_MERGE, keep_asking=True)
-
-        print ' - Preparing for merge'
 
         folders = [folder for folder in listdir(source) if not folder[0] == '.']
         for directory in folders:
@@ -85,7 +83,6 @@ if __name__ == '__main__':
             if merge:
                 if len(files) > 1:
                     print VALIDATION % merge_name
-                    print ' - Merging...\r\n'
                     cmd = build_cmd(absolute_directory, merge_name, *files)
                     print call(cmd, shell=True)
 
